@@ -11,7 +11,7 @@ import Sidebar from './components/Sidebar'
 import Home from './pages/Home'
 import History from './pages/History'
 import HistoryDetail from './pages/History/Detail'
-import Exercice from './pages/Exercice'
+import NewResult from './pages/NewResult'
 import Profil from './pages/Profil'
 import Error from './components/Error'
 import Footer from './components/Footer'
@@ -37,10 +37,7 @@ function App() {
                 path="/history/:id"
                 element={<HistoryDetail theme={basisTheme} />}
               />
-              <Route
-                path="/exercice"
-                element={<Exercice theme={basisTheme} />}
-              />
+              <Route path="/new" element={<NewResult theme={basisTheme} />} />
               <Route path="/profil" element={<Profil theme={basisTheme} />} />
               <Route path="*" element={<Error />} />
             </Routes>

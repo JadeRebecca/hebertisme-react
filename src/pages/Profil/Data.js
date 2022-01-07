@@ -1,8 +1,8 @@
 export const profilData = {
-  prenom: 'John',
-  nom: 'Doe',
+  prenom: 'Paul',
+  nom: 'Martin',
   genre: 'M',
-  age: '26',
+  age: '18',
   structure: 'AS Montpellier',
   statut: 'utilisateur',
 }

@@ -24,17 +24,17 @@ const Navbar = ({ toggle, theme }) => {
       <Nav>
         <NavbarContainer>
           <NavLogoLink to="/" onClick={toggleHome}>
-            <NavLogo src={logo} alt="JD logo" />
+            <NavLogo src={logo} alt="logo" />
           </NavLogoLink>
           <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
           <NavMenu>
             <NavItem>
-              <NavLink to="/history">Historique</NavLink>
+              <NavLink to="/new">Nouveau résultat</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/exercice">Exercices</NavLink>
+              <NavLink to="/history">Historique</NavLink>
             </NavItem>
             <NavItem>
               <NavLink to="/profil">Mon profil</NavLink>

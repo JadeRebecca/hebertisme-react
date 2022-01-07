@@ -20,11 +20,11 @@ const Sidebar = ({ toggle, isOpen }) => {
           <SidebarLink to="/" onClick={toggle}>
             Home
           </SidebarLink>
+          <SidebarLink to="/new" onClick={toggle}>
+            Nouveau résultat
+          </SidebarLink>
           <SidebarLink to="/history" onClick={toggle}>
             Historique
-          </SidebarLink>
-          <SidebarLink to="/exercice" onClick={toggle}>
-            Exercice
           </SidebarLink>
           <SidebarLink to="/profil" onClick={toggle}>
             Mon profil
