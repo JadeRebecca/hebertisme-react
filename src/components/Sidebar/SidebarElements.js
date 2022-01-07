@@ -45,7 +45,8 @@ export const SidebarLink = styled(Link)`
   cursor: pointer;
 
   &:hover {
-    color: ${({ theme }) => theme.main};
+    color: ${({ theme }) => theme.mainBackground};
+    background: ${({ theme }) => theme.secondary};
     transition: 0.2s ease-in-out;
   }
 `
