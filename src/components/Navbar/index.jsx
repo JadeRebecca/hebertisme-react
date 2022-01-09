@@ -12,12 +12,18 @@ import {
   NavMenu,
   NavItem,
   NavLink,
+  View,
+  ViewBtn,
 } from './NavbarElement'
 import logo from '../../images/logo/logo.png'
 
-const Navbar = ({ toggle, theme }) => {
+const Navbar = ({ toggle, theme, view, changeView }) => {
   const toggleHome = () => {
     scroll.scrollToTop()
+  }
+  const handleView = () => {
+    const newView = view === 1 ? 2 : 1
+    changeView(newView)
   }
   return (
     <>
@@ -45,6 +51,11 @@ const Navbar = ({ toggle, theme }) => {
               </NavLink>
             </NavItem>
           </NavMenu>
+          <View>
+            <ViewBtn onClick={handleView}>
+              {view === 1 ? 'Voir la vue coach' : 'Voir la vue adhérent'}
+            </ViewBtn>
+          </View>
         </NavbarContainer>
       </Nav>
     </>

@@ -16,5 +16,6 @@ export const basisTheme = {
   shadow: 'rgba(2,12,27,0.7)',
   primary: '#0000ff',
   secondary: '#699A32',
+  warning: '#FEA852',
   neutral: '#898079',
 }

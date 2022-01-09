@@ -18,9 +18,14 @@ import Footer from './components/Footer'
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
+  const [view, setView] = useState(1)
 
   const toggle = () => {
     setIsOpen(!isOpen)
+  }
+  const changeView = (newView) => {
+    setView(newView)
+    console.log(view)
   }
   return (
     <ThemeProvider theme={basisTheme}>
@@ -28,10 +33,18 @@ function App() {
         <GlobalStyles />
         <Router>
           <Sidebar isOpen={isOpen} toggle={toggle} />
-          <Navbar toggle={toggle} theme={basisTheme} />
+          <Navbar
+            toggle={toggle}
+            view={view}
+            changeView={changeView}
+            theme={basisTheme}
+          />
           <Layout>
             <Routes>
-              <Route path="/" element={<Home theme={basisTheme} />} />
+              <Route
+                path="/"
+                element={<Home view={view} theme={basisTheme} />}
+              />
               <Route path="/history" element={<History theme={basisTheme} />} />
               <Route
                 path="/history/:id"

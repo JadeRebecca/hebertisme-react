@@ -1,5 +1,13 @@
 import { useParams } from 'react-router-dom'
 import { HistoryData } from './Data'
+import { MdOutlinePictureAsPdf } from 'react-icons/md'
+import {
+  DetailContainer,
+  HistoryHeader,
+  HistoryBtn,
+  ResultTable,
+  ResultTr,
+} from './HistoryElements'
 
 function HistoryDetail() {
   const { id } = useParams()
@@ -8,19 +16,27 @@ function HistoryDetail() {
   )
 
   return (
-    <div>
-      <h1>Détail de la fiche</h1>
-      <h2>Numéro {id}</h2>
-      <p>Date : {data.date}</p>
-      <p>Age : {data.age} ans</p>
-      <p>Lieu : {data.lieu}</p>
-      <table>
+    <DetailContainer>
+      <h1>Détail de la fiche n°{id}</h1>
+
+      <HistoryHeader>
+        <div>
+          <p>Date : {data.date}</p>
+          <p>Age : {data.age} ans</p>
+          <p>Lieu : {data.lieu}</p>
+        </div>
+        <HistoryBtn>
+          <MdOutlinePictureAsPdf size={50} />
+        </HistoryBtn>
+      </HistoryHeader>
+
+      <ResultTable>
         <thead>
-          <tr>
+          <ResultTr>
             <th>Epreuve</th>
             <th>Perf</th>
             <th>Points</th>
-          </tr>
+          </ResultTr>
         </thead>
         <tbody>
           {data.exercices.map((item) => (
@@ -46,8 +62,8 @@ function HistoryDetail() {
             <td colspan="2">{data.aptitude}</td>
           </tr>
         </tbody>
-      </table>
-    </div>
+      </ResultTable>
+    </DetailContainer>
   )
 }
 

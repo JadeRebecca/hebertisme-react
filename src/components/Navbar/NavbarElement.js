@@ -77,8 +77,14 @@ export const NavMenu = styled.ul`
 `
 export const NavItem = styled.li`
   height: 80px;
+
+  &.view {
+    padding: 10px;
+  }
 `
-export const NavLink = styled(Link)`
+export const NavLink = styled(Link).attrs((props) => ({
+  className: props.className,
+}))`
   color: ${({ theme }) => theme.main};
 
   display: flex;
@@ -109,11 +115,32 @@ export const NavLink = styled(Link)`
     padding-right: 0.4rem;
   }
 `
-export const NavBtn = styled.nav`
+export const View = styled.nav`
   display: flex;
   align-items: center;
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoint.m}px) {
     display: none;
+  }
+`
+
+export const ViewBtn = styled.button`
+  background: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.main};
+  border: 1.4px solid ${({ theme }) => theme.main};
+  border-radius: ${({ theme }) => theme.borderRadius}px;
+  // white-space: nowrap;
+  padding: 10px 8px;
+  font-size: 16px;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  line-height: 1;
+
+  &:hover {
+    color: ${({ theme }) => theme.mainBackground};
+    background: ${({ theme }) => theme.main};
+    transition: 0.2s ease-in-out;
   }
 `
