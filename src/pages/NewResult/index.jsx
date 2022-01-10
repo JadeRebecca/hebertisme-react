@@ -1,12 +1,13 @@
 import NewResultForm from '../../components/Forms/NewResultForm'
+import Button from '../../components/Button'
 
 function NewResult() {
   return (
     <div>
-      <h1>Nouveau résultat</h1>
+      <h1>Saisie d'un nouveau résultat</h1>
       <form>
         <NewResultForm />
-        <input type="submit" value="Enregistrer" />
+        <Button text="Enregistrer" />
       </form>
     </div>
   )

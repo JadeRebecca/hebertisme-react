@@ -1,7 +1,10 @@
 import React from 'react'
 import { animateScroll as scroll } from 'react-scroll'
+import { useContext } from 'react'
+import { ViewContext } from '../../utils/context'
 import { FaBars } from 'react-icons/fa'
 import { MdLogout } from 'react-icons/md'
+import Language from '../Language'
 
 import {
   Nav,
@@ -12,12 +15,16 @@ import {
   NavMenu,
   NavItem,
   NavLink,
+  NavIcon,
+  FlagContainer,
   View,
   ViewBtn,
 } from './NavbarElement'
 import logo from '../../images/logo/logo.png'
 
-const Navbar = ({ toggle, theme, view, changeView }) => {
+const Navbar = ({ toggle, theme }) => {
+  const { view, changeView } = useContext(ViewContext)
+
   const toggleHome = () => {
     scroll.scrollToTop()
   }
@@ -46,9 +53,15 @@ const Navbar = ({ toggle, theme, view, changeView }) => {
               <NavLink to="/profil">Mon profil</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/logout">
+              <NavIcon>
                 <MdLogout size={30} />
-              </NavLink>
+              </NavIcon>
+            </NavItem>
+
+            <NavItem>
+              <FlagContainer>
+                <Language />
+              </FlagContainer>
             </NavItem>
           </NavMenu>
           <View>

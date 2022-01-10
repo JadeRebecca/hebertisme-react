@@ -1,18 +1,27 @@
 export const profilData = [
   {
+    username: 'paul.martin',
+    email: 'paul.martin@gmail.com',
+    mdp: '1234',
     prenom: 'Paul',
     nom: 'Martin',
     genre: 'M',
     age: '18',
     structure: 'AS Montpellier',
+    coach: 'Coach Carter',
     statut: 'utilisateur',
     userType: 'adhérent',
+    language: 'fr',
   },
   {
+    username: 'coach.carter',
+    email: 'coach.carter@gmail.com',
+    mdp: '1234',
     prenom: 'Coach',
     nom: 'Carter',
     structure: 'AS Montpellier',
     statut: 'gestionnaire de structure',
     userType: 'coach',
+    language: 'fr',
   },
 ]

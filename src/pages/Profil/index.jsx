@@ -1,35 +1,18 @@
+import React, { useContext } from 'react'
+import { ViewContext } from '../../utils/context'
 import { profilData } from './Data'
+import ProfilDetail from '../../components/ProfilDetail'
 
-function Profil() {
+function PersonnalInfo() {
+  const { view } = useContext(ViewContext)
+  const user = view === 1 ? profilData[0] : profilData[1]
+
   return (
     <div>
-      <h1>Mon profil utilisateur</h1>
-      <table>
-        <tbody>
-          <tr>
-            <td>Nom : </td>
-            <td>{profilData.nom}</td>
-          </tr>
-          <tr>
-            <td>Prénom : </td>
-            <td>{profilData.prenom}</td>
-          </tr>
-          <tr>
-            <td>Genre : </td>
-            <td>{profilData.genre}</td>
-          </tr>
-          <tr>
-            <td>Structure d'accueil : </td>
-            <td>{profilData.structure}</td>
-          </tr>
-          <tr>
-            <td>Type : </td>
-            <td>{profilData.statut}</td>
-          </tr>
-        </tbody>
-      </table>
+      <h1>Mon profil</h1>
+      <ProfilDetail view={view} user={user} />
     </div>
   )
 }
 
-export default Profil
+export default PersonnalInfo

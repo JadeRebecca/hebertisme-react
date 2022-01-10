@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const PageContainer = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+export const ContentContainer = styled.div`
   width: 70%;
   margin: auto;
   margin-top: 80px;

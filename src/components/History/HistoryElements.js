@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+export const HistoryContainer = styled.div``
+
 export const DetailContainer = styled.div`
   width: 400px;
 `
@@ -35,12 +37,15 @@ export const HistoryBtn = styled.button`
 
 export const ResultTable = styled.table`
   border-collapse: collapse;
+  border: 1px solid black;
   width: 100%;
 
   & > tbody > tr > td {
     padding: 4px;
+    border: 1px solid black;
   }
   & > thead > tr > th {
+    border: 1px solid black;
     padding: 4px;
   }
 `
