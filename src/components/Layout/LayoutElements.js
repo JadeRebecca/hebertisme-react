@@ -10,6 +10,7 @@ export const ContentContainer = styled.div`
   width: 70%;
   margin: auto;
   margin-top: 80px;
+  padding-bottom: 40px;
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoint.m}px) {
     width: 80%;

@@ -13,7 +13,10 @@ const ProfilEleve = ({ user }) => {
           <td>Prénom : </td>
           <td>{user.prenom}</td>
         </tr>
-
+        <tr>
+          <td>Date de naissance : </td>
+          <td>{user.date_nai}</td>
+        </tr>
         <tr>
           <td>Age : </td>
           <td>{user.age}</td>
