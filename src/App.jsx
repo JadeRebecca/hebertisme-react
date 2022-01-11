@@ -10,6 +10,7 @@ import ContentLayout from './components/Layout/ContentLayout'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import Home from './pages/Home'
+import Code from './pages/Code'
 import History from './pages/History'
 import HistoryDetail from './pages/History/Detail'
 import NewResult from './pages/NewResult'
@@ -35,6 +36,7 @@ function App() {
               <ContentLayout>
                 <Routes>
                   <Route path="/" element={<Home theme={basisTheme} />} />
+                  <Route path="/code" element={<Code theme={basisTheme} />} />
                   <Route
                     path="/history"
                     element={<History theme={basisTheme} />}

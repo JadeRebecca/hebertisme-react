@@ -44,6 +44,9 @@ const Navbar = ({ toggle, theme }) => {
           </MobileIcon>
           <NavMenu>
             <NavItem>
+              <NavLink to="/code">Code de la force</NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink to="/new">Nouveau résultat</NavLink>
             </NavItem>
             <NavItem>
