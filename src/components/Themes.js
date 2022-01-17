@@ -1,0 +1,21 @@
+export const basisTheme = {
+  breakpoint: {
+    s: 480,
+    m: 768,
+    l: 992,
+    xl: 1200,
+  },
+  borderRadius: 4,
+  body: '#fff',
+  text: '#0a192f',
+  toggleBorder: '#FFF',
+  background: '#fff',
+  main: '#0000ff',
+  mainBackground: '#ffffff',
+  mainLight: '#80DFB8',
+  shadow: 'rgba(2,12,27,0.7)',
+  primary: '#0000ff',
+  secondary: '#699A32',
+  warning: '#FEA852',
+  neutral: '#898079',
+}

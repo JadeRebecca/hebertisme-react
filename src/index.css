@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+table,
+th,
+td {
+  border: none;
+}
+
+h1 {
+  line-height: 36px;
+  margin-bottom: 30px;
+}
+
+p {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: justify;
+}
+
+li {
+  list-style: none;
+}
