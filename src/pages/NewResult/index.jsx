@@ -18,7 +18,7 @@ function NewResult() {
   const [students, setStudents] = useState([])
 
   useEffect(() => {
-    if (view === 1) setSelectedUser({id: 1, firstName: 'Paul', lastName : 'Martin', age : 16})
+    if (view === 1) setSelectedUser({id: 1, firstName: 'Paula', lastName : 'Martin', age : 16})
     else setSelectedUser({id:0, firstName: '', lastName : '', age : ''})
   }, [view])
 
