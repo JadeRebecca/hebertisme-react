@@ -1,19 +1,14 @@
 import React from 'react'
+import StudentsList from './StudentsList'
 import { StudentsContainer } from './StudentsElements'
 
-const StudentList = ({ data, onClickHandler }) => {
+const Students = ({ data, onClickHandler }) => {
   return (
     <StudentsContainer>
-      <h2>Liste de mes élèves</h2>
-      <ul>
-        {data.map((item, index) => (
-          <li key={index} onClick={onClickHandler}>
-            {item.firstName}
-          </li>
-        ))}
-      </ul>
+      <p>Choisir un élève :</p>
+      <StudentsList data={data} onClickHandler={onClickHandler}/>
     </StudentsContainer>
   )
 }
 
-export default StudentList
+export default Students
