@@ -26,11 +26,9 @@ import logo from '../../images/logo/logo.png'
 const Navbar = ({ toggle, theme }) => {
   const { view, changeView } = useContext(ViewContext)
   const authCtx = useContext(AuthContext)
-  const isLoggedIn = authCtx.isLoggedIn
 
   const logoutHandler = () => {
     authCtx.logout()
-    console.log('déconnecté!')
   }
 
   const toggleHome = () => {

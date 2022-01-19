@@ -2,7 +2,16 @@ import { useState, useRef, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthContext from '../../store/auth-context'
 
-import classes from './AuthForm.module.css'
+import {
+  FormWrapper,
+  LogoContainer,
+  Logo,
+  Title,
+  FormItemContainer,
+  FormAction,
+} from './AuthFormElements'
+import Button from '../Button'
+import logo from '../../images/logo/logo.png'
 
 const redirectRoute = '/home'
 
@@ -73,34 +82,37 @@ const AuthForm = () => {
   }
 
   return (
-    <section className={classes.auth}>
-      <h1>{isLogin ? 'Connexion' : 'Création de compte'}</h1>
+    <FormWrapper>
+      <LogoContainer>
+        <Logo src={logo} alt="logo" />
+      </LogoContainer>
+      <Title>{isLogin ? 'Connexion' : 'Création de compte'}</Title>
       <form onSubmit={submitHandler}>
-        <div className={classes.control}>
+        <FormItemContainer>
           <label htmlFor="email">Email</label>
           <input type="email" id="email" required ref={emailInputRef} />
-        </div>
-        <div className={classes.control}>
+        </FormItemContainer>
+        <FormItemContainer>
           <label htmlFor="password">Mot de passe</label>
           <input type="password" id="password" required ref={pswInputRef} />
-        </div>
-        <div className={classes.actions}>
+        </FormItemContainer>
+        <FormAction>
           {!isLoading && (
-            <button>{isLogin ? 'Connexion' : 'Création de compte'}</button>
+            <Button text={isLogin ? 'Connexion' : 'Création de compte'} />
           )}
           {isLoading && <p>Chargement...</p>}
-          <button
+          <Button
             type="button"
-            className={classes.toggle}
             onClick={switchAuthModeHandler}
-          >
-            {isLogin
-              ? 'Créer un nouveau compte'
-              : 'Se connecter avec un compte existant'}
-          </button>
-        </div>
+            text={
+              isLogin
+                ? 'Créer un nouveau compte'
+                : 'Se connecter avec un compte existant'
+            }
+          />
+        </FormAction>
       </form>
-    </section>
+    </FormWrapper>
   )
 }
 
