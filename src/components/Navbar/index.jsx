@@ -1,7 +1,8 @@
 import React from 'react'
-import { animateScroll as scroll } from 'react-scroll'
 import { useContext } from 'react'
+import { animateScroll as scroll } from 'react-scroll'
 import { ViewContext } from '../../utils/context'
+import AuthContext from '../../store/auth-context'
 import { FaBars } from 'react-icons/fa'
 import { MdLogout } from 'react-icons/md'
 import Language from '../Language'
@@ -24,6 +25,13 @@ import logo from '../../images/logo/logo.png'
 
 const Navbar = ({ toggle, theme }) => {
   const { view, changeView } = useContext(ViewContext)
+  const authCtx = useContext(AuthContext)
+  const isLoggedIn = authCtx.isLoggedIn
+
+  const logoutHandler = () => {
+    authCtx.logout()
+    console.log('déconnecté!')
+  }
 
   const toggleHome = () => {
     scroll.scrollToTop()
@@ -57,7 +65,7 @@ const Navbar = ({ toggle, theme }) => {
             </NavItem>
             <NavItem>
               <NavIcon>
-                <MdLogout size={30} />
+                <MdLogout onClick={logoutHandler} size={30} />
               </NavIcon>
             </NavItem>
 
