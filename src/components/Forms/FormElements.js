@@ -3,8 +3,15 @@ import styled from 'styled-components'
 
 export const FormGroup = styled.div`
   display: block;
-  width: 300px;
+  //width: 70%;
   //   margin: 50px auto;
+`
+
+export const FormGroupContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 `
 
 export const Label = styled.label`
@@ -19,6 +26,18 @@ export const Input = styled.input`
   border: none;
   border-radius: 3px;
   width: 100%;
+  margin-bottom: 0.5em;
+`
+export const SelectGroup = styled.div`
+  display: flex;
+  gap: 5px;
+  //   margin: 50px auto;
+`
+export const Select = styled.select`
+  padding: 0.5em;
+  background: papayawhip;
+  border: none;
+  border-radius: 3px;
   margin-bottom: 0.5em;
 `
 
