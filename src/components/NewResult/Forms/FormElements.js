@@ -46,3 +46,15 @@ export const Message = styled.label`
   color: palevioletred;
   display: block;
 `
+
+export const EpreuveWrapper = styled.div`
+  display: flex;
+  gap: 50px;
+  //   margin: 50px auto;
+`
+
+export const EpreuveContainer = styled.div`
+  border: 1px solid black;
+  width: 50%;
+  //   margin: 50px auto;
+`
