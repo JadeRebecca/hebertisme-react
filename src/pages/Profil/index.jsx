@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { ViewContext } from '../../utils/context'
 import { profilData } from './Data'
-import ProfilDetail from '../../components/ProfilDetail'
+import ProfilDetail from '../../components/Profil/ProfilDetail'
 
 function PersonnalInfo() {
   const { view } = useContext(ViewContext)

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { ViewContext } from '../../utils/context'
 import { HistoryData } from './Data'
 import HistoryList from '../../components/History'
-import StudentList from '../../components/Students'
+import StudentList from '../../components/Coach/Students/StudentsList'
 
 const url = `https://dummyapi.io/data/v1/user`
 

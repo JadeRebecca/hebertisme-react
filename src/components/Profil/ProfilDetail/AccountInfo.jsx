@@ -1,6 +1,6 @@
 import { AccountTable } from './ProfilElements'
 import { ProfilItemContainer } from './ProfilElements'
-import Button from '../Button'
+import Button from '../../UI/Button'
 
 function AccountInfo({ user }) {
   return (

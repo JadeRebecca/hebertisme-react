@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../Button'
+import Button from '../../UI/Button'
 import { Separator, ButtonWrapper } from './SelectUserElements'
 
 const SelectUser = ({ userTypeHandler }) => {
@@ -13,9 +13,9 @@ const SelectUser = ({ userTypeHandler }) => {
     <div>
       <p>Je souhaite entrer un nouveau résultat pour :</p>
       <ButtonWrapper>
-      <Button text='Moi-même' onClick={chooseMyself}/>
-      <Separator>ou</Separator>
-      <Button text='Un de mes élèves' onClick={chooseStudent}/>
+        <Button text="Moi-même" onClick={chooseMyself} />
+        <Separator>ou</Separator>
+        <Button text="Un de mes élèves" onClick={chooseStudent} />
       </ButtonWrapper>
     </div>
   )

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useContext } from 'react'
 import { animateScroll as scroll } from 'react-scroll'
-import { ViewContext } from '../../utils/context'
-import AuthContext from '../../store/auth-context'
+import { ViewContext } from '../../../utils/context'
+import AuthContext from '../../../store/auth-context'
 import { FaBars } from 'react-icons/fa'
 import { MdLogout } from 'react-icons/md'
 import Language from '../Language'
@@ -21,7 +21,7 @@ import {
   View,
   ViewBtn,
 } from './NavbarElement'
-import logo from '../../images/logo/logo.png'
+import logo from '../../../images/logo/logo.png'
 
 const Navbar = ({ toggle, theme }) => {
   const { view, changeView } = useContext(ViewContext)

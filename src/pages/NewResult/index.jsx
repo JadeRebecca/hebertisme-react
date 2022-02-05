@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { ViewContext } from '../../utils/context'
-import SelectUser from '../../components/SelectUser'
-import NewResultForm from '../../components/Forms/NewResultForm'
+import SelectUser from '../../components/Coach/SelectUser'
+import NewResultForm from '../../components/NewResult/Forms/NewResultForm'
 import Button from '../../components/Button'
-import StudentList from '../../components/Students'
+import StudentList from '../../components/Coach/Students/StudentsList'
 
 const url = `https://dummyapi.io/data/v1/user`
 
@@ -13,17 +13,34 @@ const init = { method: 'GET', headers: headers, mode: 'cors', cache: 'default' }
 
 function NewResult() {
   const { view } = useContext(ViewContext)
-  const [selectedUser, setSelectedUser] = useState({id:0, firstName: '', lastName :'', age : 0})
+  const [selectedUser, setSelectedUser] = useState({
+    id: 0,
+    firstName: '',
+    lastName: '',
+    age: 0,
+  })
   const [showStudentList, setShowStudentList] = useState(false)
   const [students, setStudents] = useState([])
 
   useEffect(() => {
-    if (view === 1) setSelectedUser({id: 1, firstName: 'Paula', lastName : 'Martin', age : 16})
-    else setSelectedUser({id:0, firstName: '', lastName : '', age : ''})
+    if (view === 1)
+      setSelectedUser({
+        id: 1,
+        firstName: 'Paula',
+        lastName: 'Martin',
+        age: 16,
+      })
+    else setSelectedUser({ id: 0, firstName: '', lastName: '', age: '' })
   }, [view])
 
   const userTypeHandler = (userType) => {
-    if (userType === 2) setSelectedUser({id: 2, firstName: 'Coach', lastName : 'Carter', age : 32})
+    if (userType === 2)
+      setSelectedUser({
+        id: 2,
+        firstName: 'Coach',
+        lastName: 'Carter',
+        age: 32,
+      })
     if (userType === 1) setShowStudentList(true)
   }
 
@@ -51,12 +68,15 @@ function NewResult() {
       {view === 2 && !showStudentList && selectedUser.id === 0 && (
         <SelectUser userTypeHandler={userTypeHandler} />
       )}
-      {view === 2 && showStudentList && selectedUser.id === 0 && students.length > 0 && (
-        <StudentList data={students} onClickHandler={chooseStudent} />
-      )}
-      {selectedUser.id !==0 && (
+      {view === 2 &&
+        showStudentList &&
+        selectedUser.id === 0 &&
+        students.length > 0 && (
+          <StudentList data={students} onClickHandler={chooseStudent} />
+        )}
+      {selectedUser.id !== 0 && (
         <form>
-          <NewResultForm user={selectedUser}/>
+          <NewResultForm user={selectedUser} />
           <Button text="Enregistrer" />
         </form>
       )}
