@@ -26,7 +26,7 @@ function NewResult() {
     if (view === 1)
       setSelectedUser({
         id: 1,
-        firstName: 'Paula',
+        firstName: 'Paul',
         lastName: 'Martin',
         age: 16,
       })
@@ -77,7 +77,7 @@ function NewResult() {
       {selectedUser.id !== 0 && (
         <form>
           <NewResultForm user={selectedUser} />
-          <Button text="Enregistrer" />
+          <Button disabled text="Enregistrer" />
         </form>
       )}
     </div>

@@ -19,4 +19,10 @@ export const Btn = styled.button`
     background: ${({ theme }) => theme.main};
     transition: 0.2s ease-in-out;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.main};
+  }
 `

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   FormGroup,
   Label,
@@ -211,7 +211,23 @@ for (let i = 0; i < 25; i++) {
   )
 }
 
+const plongeonMeterOptions = []
+for (let i = 0; i < 15; i++) {
+  plongeonMeterOptions.push(
+    <option value={i} key={i}>
+      {i}
+    </option>
+  )
+}
+
 const NewResultForm = ({ user }) => {
+  const [nbEpreuve, setNbEpreuve] = useState(0)
+
+  const nbEpreuveHandler = (e) => {
+    console.log(e.target.value)
+    setNbEpreuve(e.target.value)
+  }
+
   return (
     <div>
       <h3>
@@ -237,7 +253,11 @@ const NewResultForm = ({ user }) => {
       <h3>Nombre d'épreuves</h3>
       <FormGroupContainer>
         <div>
-          <Select name="nombre" id="nombre">
+          <Select
+            name="nombreEpreuve"
+            id="nombreEpreuve"
+            onChange={nbEpreuveHandler}
+          >
             <option value="">-- Choisir un nombre --</option>
             <option value="3">3</option>
             <option value="5">5</option>
@@ -248,565 +268,969 @@ const NewResultForm = ({ user }) => {
         </div>
       </FormGroupContainer>
 
-      <ResultWrapper>
-        <ResultContainer>
-          <H3>Version 1</H3>
-          <EpreuveContainer>
-            <h4>Course de demi-fond</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="course-demi-1">500m</Label>
-                <InputGroup id="course-demi-1">
-                  <Input
-                    type="number"
-                    id="course-demi-1-min"
-                    min="0"
-                    max="100"
-                    step="1"
-                  />
-                  min
-                  <Input
-                    type="number"
-                    id="course-demi-1-s"
-                    min="0"
-                    max="59"
-                    step="1"
-                  />
-                  s
-                </InputGroup>
-              </div>
-              <div>
-                <Label htmlFor="course-demi-2">1000m</Label>
-                <InputGroup id="course-demi-2">
-                  <Input
-                    type="number"
-                    id="course-demi-2-min"
-                    min="0"
-                    max="100"
-                    step="1"
-                  />
-                  min
-                  <Input
-                    type="number"
-                    id="course-demi-2-s"
-                    min="0"
-                    max="59"
-                    step="1"
-                  />
-                  s
-                </InputGroup>
-              </div>
-              <div>
-                <Label htmlFor="course-demi-3">1500m</Label>
-                <InputGroup id="course-demi-3">
-                  <Input
-                    type="number"
-                    id="course-demi-3-min"
-                    min="0"
-                    max="100"
-                    step="1"
-                  />
-                  min
-                  <Input
-                    type="number"
-                    id="course-demi-3-s"
-                    min="0"
-                    max="59"
-                    step="1"
-                  />
-                  s
-                </InputGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
+      {nbEpreuve > 0 && (
+        <ResultWrapper>
+          <ResultContainer>
+            <H3>Version 1</H3>
+            {nbEpreuve > 9 && (
+              <EpreuveContainer>
+                <h4>Course de vitesse</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="course-vitesse-1">60m</Label>
+                    <InputGroup id="course-vitesse-1">
+                      <Input
+                        type="number"
+                        id="course-vitesse-1-s"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      s
+                    </InputGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="course-vitesse-2">80m</Label>
+                    <InputGroup id="course-vitesse-2">
+                      <Input
+                        type="number"
+                        id="course-vitesse-2-s"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      s
+                    </InputGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="course-vitesse-3">100m</Label>
+                    <InputGroup id="course-vitesse-3">
+                      <Input
+                        type="number"
+                        id="course-vitesse-3-s"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      s
+                    </InputGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="course-vitesse-4">300m</Label>
+                    <InputGroup id="course-vitesse-4">
+                      <Input
+                        type="number"
+                        id="course-vitesse-4-s"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      s
+                    </InputGroup>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
 
-          <EpreuveContainer>
-            <h4>Saut en hauteur</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">avec élan</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="hauteur"
-                    min="0"
-                    max="100"
-                    step="0.01"
-                  />
-                  m
-                </InputGroup>
-              </div>
-              <div>
-                <Label htmlFor="longueur">sans élan</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="longueur"
-                    min="0"
-                    max="100"
-                    step="0.01"
-                  />
-                  m
-                </InputGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-
-          <EpreuveContainer>
-            <h4>Saut en longueur</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">avec élan</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="hauteur"
-                    min="0"
-                    max="100"
-                    step="0.01"
-                  />
-                  m
-                </InputGroup>
-              </div>
-              <div>
-                <Label htmlFor="longueur">sans élan</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="longueur"
-                    min="0"
-                    max="100"
-                    step="0.01"
-                  />
-                  m
-                </InputGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-
-          <EpreuveContainer>
-            <h4>Grimper à la corde</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">En hauteur simple</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="grimper-corde-hauteur"
-                    min="0"
-                    max="100"
-                    step="0.01"
-                  />
-                  m
-                </InputGroup>
-              </div>
-              <div>
-                <Label htmlFor="longueur">En vitesse</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="grimper-corde-vitesse"
-                    min="0"
-                    max="100"
-                    step="0.01"
-                  />
-                  m
-                  <Input
-                    type="number"
-                    id="grimper-corde-vitesse"
-                    min="0"
-                    max="100"
-                    step="0.01"
-                  />
-                  s
-                </InputGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-
-          <EpreuveContainer>
-            <h4>Grimper traction / répulsion</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">Sans appui des pieds</Label>
-                <Input
-                  type="number"
-                  id="grimper-corde-hauteur"
-                  min="0"
-                  max="100"
-                  step="0.1"
-                />
-              </div>
-              <div>
-                <Label htmlFor="longueur">Avec appui des pieds</Label>
-                <Input
-                  type="number"
-                  id="grimper-corde-vitesse"
-                  min="0"
-                  max="100"
-                  step="0.01"
-                />
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-
-          <EpreuveContainer>
-            <h4>Lever</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">en lourd</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="hauteur"
-                    min="0"
-                    max="100"
-                    step="1"
-                  />
-                  kg
-                </InputGroup>{' '}
-              </div>
-              <div>
-                <Label htmlFor="longueur">en résistance</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="longueur"
-                    min="0"
-                    max="100"
-                    step="0.01"
-                  />
-                  kg
-                  <Input
-                    type="number"
-                    id="longueur"
-                    min="0"
-                    max="100"
-                    step="1"
-                  />
-                  fois
-                </InputGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-
-          <EpreuveContainer>
-            <h4>Lancer en distance</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">7kg 257</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="hauteur"
-                    min="0"
-                    max="100"
-                    step="0.01"
-                  />
-                  m
-                </InputGroup>
-              </div>
-              <div>
-                <Label htmlFor="longueur">4kg</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="longueur"
-                    min="0"
-                    max="100"
-                    step="0.01"
-                  />
-                  m
-                </InputGroup>
-              </div>
-              <div>
-                <Label htmlFor="longueur">1kg</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="longueur"
-                    min="0"
-                    max="100"
-                    step="0.01"
-                  />
-                  m
-                </InputGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-
-          <EpreuveContainer>
-            <h4>Lancer en adresse</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">12 lancers par bras</Label>
-                <InputGroup>
-                  <Input
-                    type="number"
-                    id="hauteur"
-                    min="0"
-                    max="100"
-                    step="1"
-                  />
-                  jets
-                </InputGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-        </ResultContainer>
-
-        <ResultContainer>
-          <H3>Version 2</H3>
-          <EpreuveContainer>
-            <h4>Course de demi-fond</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="course-demi-1">500m</Label>
-                <SelectGroup id="course-demi-1">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- min --</option>
-                    {timeOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- s --</option>
-                    {timeOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-              <div>
-                <Label htmlFor="course-demi-2">1000m</Label>
-                <SelectGroup id="course-demi-2">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- min --</option>
-                    {timeOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- s --</option>
-                    {timeOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-              <div>
-                <Label htmlFor="course-demi-3">1500m</Label>
-                <SelectGroup id="course-demi-3">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- min --</option>
-                    {timeOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- s --</option>
-                    {timeOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-
-          <EpreuveContainer>
-            <h4>Saut en hauteur</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">avec élan</Label>
-                <SelectGroup id="course-demi-1">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- m --</option>
-                    {sautMeterOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- cm --</option>
-                    {cmOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-              <div>
-                <Label htmlFor="longueur">sans élan</Label>
-                <SelectGroup id="course-demi-1">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- m --</option>
-                    {sautMeterOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- cm --</option>
-                    {cmOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-
-          <EpreuveContainer>
-            <h4>Saut en longueur</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">avec élan</Label>
-                <SelectGroup id="course-demi-1">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- m --</option>
-                    {sautMeterOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- cm --</option>
-                    {cmOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-              <div>
-                <Label htmlFor="longueur">sans élan</Label>
-                <SelectGroup id="course-demi-1">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- m --</option>
-                    {sautMeterOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- cm --</option>
-                    {cmOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-
-          <EpreuveContainer>
-            <h4>Grimper à la corde</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">En hauteur simple</Label>
-                <SelectGroup id="course-demi-1">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- m --</option>
-                    {grimperMeterOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- cm --</option>
-                    {cmOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-              <div>
-                <Label htmlFor="longueur">En vitesse</Label>
-                <SelectGroup id="course-demi-1">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- m --</option>
-                    {grimperMeterOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- cm --</option>
-                    {cmOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-
-          <EpreuveContainer>
-            <h4>Grimper traction / répulsion</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">sans appui des pieds</Label>
+            <EpreuveContainer>
+              <h4>Course de demi-fond</h4>
+              <FormGroupContainer>
                 <div>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- m --</option>
-                    {grimperAppuiOptions}
-                  </Select>
+                  <Label htmlFor="course-demi-1">500m</Label>
+                  <InputGroup id="course-demi-1">
+                    <Input
+                      type="number"
+                      id="course-demi-1-min"
+                      min="0"
+                      max="100"
+                      step="1"
+                    />
+                    min
+                    <Input
+                      type="number"
+                      id="course-demi-1-s"
+                      min="0"
+                      max="59"
+                      step="1"
+                    />
+                    s
+                  </InputGroup>
                 </div>
-              </div>
-              <div>
-                <Label htmlFor="longueur">avec appui des pieds</Label>
                 <div>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- m --</option>
-                    {grimperSansAppuiOptions}
-                  </Select>
+                  <Label htmlFor="course-demi-2">1000m</Label>
+                  <InputGroup id="course-demi-2">
+                    <Input
+                      type="number"
+                      id="course-demi-2-min"
+                      min="0"
+                      max="100"
+                      step="1"
+                    />
+                    min
+                    <Input
+                      type="number"
+                      id="course-demi-2-s"
+                      min="0"
+                      max="59"
+                      step="1"
+                    />
+                    s
+                  </InputGroup>
                 </div>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
+                <div>
+                  <Label htmlFor="course-demi-3">1500m</Label>
+                  <InputGroup id="course-demi-3">
+                    <Input
+                      type="number"
+                      id="course-demi-3-min"
+                      min="0"
+                      max="100"
+                      step="1"
+                    />
+                    min
+                    <Input
+                      type="number"
+                      id="course-demi-3-s"
+                      min="0"
+                      max="59"
+                      step="1"
+                    />
+                    s
+                  </InputGroup>
+                </div>
+              </FormGroupContainer>
+            </EpreuveContainer>
 
-          <EpreuveContainer>
-            <h4>Lever</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">en lourd</Label>
-                <div>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- kg --</option>
-                    {leverLourdOptions}
-                  </Select>
-                </div>
-              </div>
-              <div>
-                <Label htmlFor="longueur">en résistance</Label>
-                <div>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- kg --</option>
-                    {leverResistanceOptions}
-                  </Select>
-                </div>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
+            {nbEpreuve > 5 && (
+              <EpreuveContainer>
+                <h4>Course de fond</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="course-fond-1">3000m</Label>
+                    <InputGroup id="course-fond-1">
+                      <Input
+                        type="number"
+                        id="course-fond-1-min"
+                        min="0"
+                        max="100"
+                        step="1"
+                      />
+                      min
+                      <Input
+                        type="number"
+                        id="course-fond-1-s"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      s
+                    </InputGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="course-fond-2">5000m</Label>
+                    <InputGroup id="course-fond-2">
+                      <Input
+                        type="number"
+                        id="course-fond-2-min"
+                        min="0"
+                        max="100"
+                        step="1"
+                      />
+                      min
+                      <Input
+                        type="number"
+                        id="course-fond-2-s"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      s
+                    </InputGroup>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
 
-          <EpreuveContainer>
-            <h4>Lancer en distance</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">7kg 257</Label>
-                <SelectGroup id="course-demi-1">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- m --</option>
-                    {lancerMeterOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- cm --</option>
-                    {cmOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-              <div>
-                <Label htmlFor="longueur">4kg</Label>
-                <SelectGroup id="course-demi-1">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- m --</option>
-                    {lancerMeterOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- cm --</option>
-                    {cmOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-              <div>
-                <Label htmlFor="longueur">1kg</Label>
-                <SelectGroup id="course-demi-1">
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- m --</option>
-                    {lancerMeterOptions}
-                  </Select>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- cm --</option>
-                    {cmOptions}
-                  </Select>
-                </SelectGroup>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-
-          <EpreuveContainer>
-            <h4>Lancer en adresse</h4>
-            <FormGroupContainer>
-              <div>
-                <Label htmlFor="hauteur">12 lancers par bras</Label>
+            <EpreuveContainer>
+              <h4>Saut en hauteur</h4>
+              <FormGroupContainer>
                 <div>
-                  <Select name="hauteur" id="hauteur">
-                    <option value="">-- jets --</option>
-                    {lancerAdresseOptions}
-                  </Select>
+                  <Label htmlFor="hauteur-elan">avec élan</Label>
+                  <InputGroup>
+                    <Input
+                      type="number"
+                      id="hauteur-elan"
+                      min="0"
+                      max="100"
+                      step="0.01"
+                    />
+                    m
+                  </InputGroup>
                 </div>
-              </div>
-            </FormGroupContainer>
-          </EpreuveContainer>
-        </ResultContainer>
-      </ResultWrapper>
+                {nbEpreuve > 9 && (
+                  <div>
+                    <Label htmlFor="hauteur-sans-elan">sans élan</Label>
+                    <InputGroup>
+                      <Input
+                        type="number"
+                        id="hauteur-sans-elan"
+                        min="0"
+                        max="100"
+                        step="0.01"
+                      />
+                      m
+                    </InputGroup>
+                  </div>
+                )}
+              </FormGroupContainer>
+            </EpreuveContainer>
+
+            {nbEpreuve > 3 && (
+              <EpreuveContainer>
+                <h4>Saut en longueur</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="longueur-elan">avec élan</Label>
+                    <InputGroup>
+                      <Input
+                        type="number"
+                        id="longueur-elan"
+                        min="0"
+                        max="100"
+                        step="0.01"
+                      />
+                      m
+                    </InputGroup>
+                  </div>
+                  {nbEpreuve > 9 && (
+                    <div>
+                      <Label htmlFor="longueur-sans-elan">sans élan</Label>
+                      <InputGroup>
+                        <Input
+                          type="number"
+                          id="longueur-sans-elan"
+                          min="0"
+                          max="100"
+                          step="0.01"
+                        />
+                        m
+                      </InputGroup>
+                    </div>
+                  )}
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+
+            <EpreuveContainer>
+              <h4>Grimper à la corde</h4>
+              <FormGroupContainer>
+                <div>
+                  <Label htmlFor="grimper-corde-hauteur">
+                    En hauteur simple
+                  </Label>
+                  <InputGroup>
+                    <Input
+                      type="number"
+                      id="grimper-corde-hauteur"
+                      min="0"
+                      max="100"
+                      step="0.01"
+                    />
+                    m
+                  </InputGroup>
+                </div>
+                <div>
+                  <Label htmlFor="grimper-corde-vitesse">En vitesse</Label>
+                  <InputGroup>
+                    <Input
+                      type="number"
+                      id="grimper-corde-vitesse-m"
+                      min="0"
+                      max="100"
+                      step="0.01"
+                    />
+                    m
+                    <Input
+                      type="number"
+                      id="grimper-corde-vitesse-s"
+                      min="0"
+                      max="100"
+                      step="0.01"
+                    />
+                    s
+                  </InputGroup>
+                </div>
+              </FormGroupContainer>
+            </EpreuveContainer>
+
+            <EpreuveContainer>
+              <h4>Grimper traction / répulsion</h4>
+              <FormGroupContainer>
+                <div>
+                  <Label htmlFor="grimper-traction-sans-appui">
+                    Sans appui des pieds
+                  </Label>
+                  <Input
+                    type="number"
+                    id="grimper-traction-sans-appui"
+                    min="0"
+                    max="100"
+                    step="0.1"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="grimper-traction-avec-appui">
+                    Avec appui des pieds
+                  </Label>
+                  <Input
+                    type="number"
+                    id="grimper-traction-avec-appui"
+                    min="0"
+                    max="100"
+                    step="0.01"
+                  />
+                </div>
+              </FormGroupContainer>
+            </EpreuveContainer>
+
+            {nbEpreuve > 3 && (
+              <EpreuveContainer>
+                <h4>Lever</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="lever-lourd">en lourd</Label>
+                    <InputGroup>
+                      <Input
+                        type="number"
+                        id="lever-lourd"
+                        min="0"
+                        max="100"
+                        step="1"
+                      />
+                      kg
+                    </InputGroup>{' '}
+                  </div>
+                  <div>
+                    <Label htmlFor="lever-resistance">en résistance</Label>
+                    <InputGroup>
+                      <Input
+                        type="number"
+                        id="lever-resistance-kg"
+                        min="0"
+                        max="100"
+                        step="0.01"
+                      />
+                      kg
+                      <Input
+                        type="number"
+                        id="lever-resistance-rep"
+                        min="0"
+                        max="100"
+                        step="1"
+                      />
+                      fois
+                    </InputGroup>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+
+            {nbEpreuve > 3 && (
+              <EpreuveContainer>
+                <h4>Lancer en distance</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="lancer-distance-1">7kg 257</Label>
+                    <InputGroup>
+                      <Input
+                        type="number"
+                        id="lancer-distance-1"
+                        min="0"
+                        max="100"
+                        step="0.01"
+                      />
+                      m
+                    </InputGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="lancer-distance-2">4kg</Label>
+                    <InputGroup>
+                      <Input
+                        type="number"
+                        id="lancer-distance-2"
+                        min="0"
+                        max="100"
+                        step="0.01"
+                      />
+                      m
+                    </InputGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="lancer-distance-3">1kg</Label>
+                    <InputGroup>
+                      <Input
+                        type="number"
+                        id="lancer-distance-3"
+                        min="0"
+                        max="100"
+                        step="0.01"
+                      />
+                      m
+                    </InputGroup>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+            {nbEpreuve > 3 && (
+              <EpreuveContainer>
+                <h4>Lancer en adresse</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="lancer-adresse">12 lancers par bras</Label>
+                    <InputGroup>
+                      <Input
+                        type="number"
+                        id="lancer-adresse"
+                        min="0"
+                        max="100"
+                        step="1"
+                      />
+                      jets
+                    </InputGroup>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+            {nbEpreuve > 10 && (
+              <EpreuveContainer>
+                <h4>Natation</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="natation-50">50m</Label>
+                    <InputGroup id="natation-50">
+                      <Input
+                        type="number"
+                        id="natation-50-min"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      min
+                      <Input
+                        type="number"
+                        id="natation-50-s"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      s
+                    </InputGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="natation-100">100m</Label>
+                    <InputGroup id="natation-100">
+                      <Input
+                        type="number"
+                        id="natation-100-min"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      min
+                      <Input
+                        type="number"
+                        id="natation-100-s"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      s
+                    </InputGroup>
+                  </div>
+                </FormGroupContainer>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="plongee">plongée</Label>
+                    <InputGroup id="plongee">
+                      <Input
+                        type="number"
+                        id="plongee-min"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      min
+                      <Input
+                        type="number"
+                        id="plongee-s"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      s
+                    </InputGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="plongeon">plongeon</Label>
+                    <InputGroup id="plongeon">
+                      <Input
+                        type="number"
+                        id="plongeon-m"
+                        min="0"
+                        max="59"
+                        step="1"
+                      />
+                      m
+                    </InputGroup>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+          </ResultContainer>
+
+          <ResultContainer>
+            <H3>Version 2</H3>
+            {nbEpreuve > 9 && (
+              <EpreuveContainer>
+                <h4>Course de vitesse</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="course-vitesse-1">60m</Label>
+                    <SelectGroup id="course-vitesse-1">
+                      <Select name="course-vitesse-1-s" id="course-vitesse-1-s">
+                        <option value="">-- s --</option>
+                        {timeOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="course-vitesse-2">80m</Label>
+                    <SelectGroup id="course-vitesse-2">
+                      <Select name="course-vitesse-2-s" id="course-vitesse-2-s">
+                        <option value="">-- s --</option>
+                        {timeOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="course-vitesse-3">100m</Label>
+                    <SelectGroup id="course-vitesse-3">
+                      <Select name="course-vitesse-3-s" id="course-vitesse-3-s">
+                        <option value="">-- s --</option>
+                        {timeOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="course-vitesse-4">300m</Label>
+                    <SelectGroup id="course-vitesse-4">
+                      <Select name="course-vitesse-4-s" id="course-vitesse-4-s">
+                        <option value="">-- s --</option>
+                        {timeOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+
+            <EpreuveContainer>
+              <h4>Course de demi-fond</h4>
+              <FormGroupContainer>
+                <div>
+                  <Label htmlFor="course-demi-1">500m</Label>
+                  <SelectGroup id="course-demi-1">
+                    <Select name="course-demi-1-min" id="course-demi-1-min">
+                      <option value="">-- min --</option>
+                      {timeOptions}
+                    </Select>
+                    <Select name="course-demi-1-s" id="course-demi-1-s">
+                      <option value="">-- s --</option>
+                      {timeOptions}
+                    </Select>
+                  </SelectGroup>
+                </div>
+                <div>
+                  <Label htmlFor="course-demi-2">1000m</Label>
+                  <SelectGroup id="course-demi-2">
+                    <Select name="course-demi-2-min" id="course-demi-2-min">
+                      <option value="">-- min --</option>
+                      {timeOptions}
+                    </Select>
+                    <Select name="course-demi-2-s" id="course-demi-2-s">
+                      <option value="">-- s --</option>
+                      {timeOptions}
+                    </Select>
+                  </SelectGroup>
+                </div>
+                <div>
+                  <Label htmlFor="course-demi-3">1500m</Label>
+                  <SelectGroup id="course-demi-3">
+                    <Select name="course-demi-3-min" id="course-demi-3-min">
+                      <option value="">-- min --</option>
+                      {timeOptions}
+                    </Select>
+                    <Select name="course-demi-3-s" id="course-demi-3-s">
+                      <option value="">-- s --</option>
+                      {timeOptions}
+                    </Select>
+                  </SelectGroup>
+                </div>
+              </FormGroupContainer>
+            </EpreuveContainer>
+
+            {nbEpreuve > 5 && (
+              <EpreuveContainer>
+                <h4>Course de fond</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="course-fond-1">3000m</Label>
+                    <SelectGroup id="course-fond-1">
+                      <Select name="course-fond-1-min" id="course-fond-1-min">
+                        <option value="">-- min --</option>
+                        {timeOptions}
+                      </Select>
+                      <Select name="course-fond-1-s" id="course-fond-1-s">
+                        <option value="">-- s --</option>
+                        {timeOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="course-fond-2">5000m</Label>
+                    <SelectGroup id="course-fond-2">
+                      <Select name="course-fond-2-min" id="course-fond-2-min">
+                        <option value="">-- min --</option>
+                        {timeOptions}
+                      </Select>
+                      <Select name="course-fond-2-s" id="course-fond-2-s">
+                        <option value="">-- s --</option>
+                        {timeOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+
+            <EpreuveContainer>
+              <h4>Saut en hauteur</h4>
+              <FormGroupContainer>
+                <div>
+                  <Label htmlFor="hauteur-elan">avec élan</Label>
+                  <SelectGroup id="hauteur-elan">
+                    <Select name="hauteur-elan-m" id="hauteur-elan-m">
+                      <option value="">-- m --</option>
+                      {sautMeterOptions}
+                    </Select>
+                    <Select name="hauteur_elan-cm" id="hauteur-elan-cm">
+                      <option value="">-- cm --</option>
+                      {cmOptions}
+                    </Select>
+                  </SelectGroup>
+                </div>
+                {nbEpreuve > 9 && (
+                  <div>
+                    <Label htmlFor="hauteur-sans-elan">sans élan</Label>
+                    <SelectGroup id="hauteur-sans-elan">
+                      <Select
+                        name="hauteur-sans-elan-m"
+                        id="hauteur-sans-elan-m"
+                      >
+                        <option value="">-- m --</option>
+                        {sautMeterOptions}
+                      </Select>
+                      <Select
+                        name="hauteur-sans-elan-cm"
+                        id="hauteur-sans-elan-cm"
+                      >
+                        <option value="">-- cm --</option>
+                        {cmOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                )}
+              </FormGroupContainer>
+            </EpreuveContainer>
+
+            {nbEpreuve > 3 && (
+              <EpreuveContainer>
+                <h4>Saut en longueur</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="longueur-elan">avec élan</Label>
+                    <SelectGroup id="longueur-elan">
+                      <Select name="longueur-elan-m" id="longueur-elan-m">
+                        <option value="">-- m --</option>
+                        {sautMeterOptions}
+                      </Select>
+                      <Select name="longueur-elan-cm" id="longueur-elan-cm">
+                        <option value="">-- cm --</option>
+                        {cmOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                  {nbEpreuve > 9 && (
+                    <div>
+                      <Label htmlFor="longueur-sans-elan">sans élan</Label>
+                      <SelectGroup id="longueur-sans-elan">
+                        <Select
+                          name="longueur-sans-elan-m"
+                          id="longueur-sans-elan-m"
+                        >
+                          <option value="">-- m --</option>
+                          {sautMeterOptions}
+                        </Select>
+                        <Select
+                          name="longueur-sans-elan-cm"
+                          id="longueur-sans-elan-cm"
+                        >
+                          <option value="">-- cm --</option>
+                          {cmOptions}
+                        </Select>
+                      </SelectGroup>
+                    </div>
+                  )}
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+
+            <EpreuveContainer>
+              <h4>Grimper à la corde</h4>
+              <FormGroupContainer>
+                <div>
+                  <Label htmlFor="grimper-corde">En hauteur simple</Label>
+                  <SelectGroup id="grimper-corde">
+                    <Select name="grimper-corde-m" id="grimper-corde-m">
+                      <option value="">-- m --</option>
+                      {grimperMeterOptions}
+                    </Select>
+                    <Select name="grimper-corde-cm" id="grimper-corde-cm">
+                      <option value="">-- cm --</option>
+                      {cmOptions}
+                    </Select>
+                  </SelectGroup>
+                </div>
+                <div>
+                  <Label htmlFor="grimper-vitesse">En vitesse</Label>
+                  <SelectGroup id="grimper-vitesse">
+                    <Select name="grimper-vitesse-m" id="grimper-vitesse-m">
+                      <option value="">-- m --</option>
+                      {grimperMeterOptions}
+                    </Select>
+                    <Select name="grimper-vitesse-cm" id="grimper-vitesse-cm">
+                      <option value="">-- cm --</option>
+                      {cmOptions}
+                    </Select>
+                  </SelectGroup>
+                </div>
+              </FormGroupContainer>
+            </EpreuveContainer>
+
+            <EpreuveContainer>
+              <h4>Grimper traction / répulsion</h4>
+              <FormGroupContainer>
+                <div>
+                  <Label htmlFor="grimper-sans-appui">
+                    sans appui des pieds
+                  </Label>
+                  <div>
+                    <Select
+                      name="grimper-sans-appui-m"
+                      id="grimper-sans-appui-m"
+                    >
+                      <option value="">-- m --</option>
+                      {grimperAppuiOptions}
+                    </Select>
+                  </div>
+                </div>
+                <div>
+                  <Label htmlFor="grimper-avec-appui">
+                    avec appui des pieds
+                  </Label>
+                  <div>
+                    <Select
+                      name="grimper-avec-appui-m"
+                      id="grimper-avec-appui-m"
+                    >
+                      <option value="">-- m --</option>
+                      {grimperSansAppuiOptions}
+                    </Select>
+                  </div>
+                </div>
+              </FormGroupContainer>
+            </EpreuveContainer>
+
+            {nbEpreuve > 3 && (
+              <EpreuveContainer>
+                <h4>Lever</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="lever-lourd">en lourd</Label>
+                    <div>
+                      <Select name="lever-lourd" id="lever-lourd">
+                        <option value="">-- kg --</option>
+                        {leverLourdOptions}
+                      </Select>
+                    </div>
+                  </div>
+                  <div>
+                    <Label htmlFor="lever-resistance">en résistance</Label>
+                    <div>
+                      <Select name="lever-resistance" id="lever-resistance">
+                        <option value="">-- kg --</option>
+                        {leverResistanceOptions}
+                      </Select>
+                    </div>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+
+            {nbEpreuve > 3 && (
+              <EpreuveContainer>
+                <h4>Lancer en distance</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="lancer-distance-1">7kg 257</Label>
+                    <SelectGroup id="lancer-distance-1">
+                      <Select
+                        name="lancer-distance-1-m"
+                        id="lancer-distance-1-m"
+                      >
+                        <option value="">-- m --</option>
+                        {lancerMeterOptions}
+                      </Select>
+                      <Select
+                        name="lancer-distance-1-cm"
+                        id="lancer-distance-1-cm"
+                      >
+                        <option value="">-- cm --</option>
+                        {cmOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="lancer-distance-2">4kg</Label>
+                    <SelectGroup id="lancer-distance-2">
+                      <Select
+                        name="lancer-distance-2-m"
+                        id="lancer-distance-2-m"
+                      >
+                        <option value="">-- m --</option>
+                        {lancerMeterOptions}
+                      </Select>
+                      <Select
+                        name="lancer-distance-2-cm"
+                        id="lancer-distance-2-cm"
+                      >
+                        <option value="">-- cm --</option>
+                        {cmOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="lancer-distance-3">1kg</Label>
+                    <SelectGroup id="lancer-distance-3">
+                      <Select
+                        name="lancer-distance-3-m"
+                        id="lancer-distance-3-m"
+                      >
+                        <option value="">-- m --</option>
+                        {lancerMeterOptions}
+                      </Select>
+                      <Select
+                        name="lancer-distance-3-cm"
+                        id="lancer-distance-3-cm"
+                      >
+                        <option value="">-- cm --</option>
+                        {cmOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+            {nbEpreuve > 3 && (
+              <EpreuveContainer>
+                <h4>Lancer en adresse</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="lancer-adresse">12 lancers par bras</Label>
+                    <div>
+                      <Select name="lancer-adresse" id="lancer-adresse">
+                        <option value="">-- jets --</option>
+                        {lancerAdresseOptions}
+                      </Select>
+                    </div>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+            {nbEpreuve > 10 && (
+              <EpreuveContainer>
+                <h4>Natation</h4>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="natation-50">50m</Label>
+                    <SelectGroup id="natation-50">
+                      <Select name="natation-50-min" id="natation-50-min">
+                        <option value="">-- min --</option>
+                        {timeOptions}
+                      </Select>
+                      <Select name="natation-50-s" id="natation-50-s">
+                        <option value="">-- s --</option>
+                        {timeOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="natation-100">100m</Label>
+                    <SelectGroup id="natation-100">
+                      <Select name="natation-100-min" id="natation-100-min">
+                        <option value="">-- min --</option>
+                        {timeOptions}
+                      </Select>
+                      <Select name="natation-100s" id="natation-100s">
+                        <option value="">-- s --</option>
+                        {timeOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                </FormGroupContainer>
+                <FormGroupContainer>
+                  <div>
+                    <Label htmlFor="plongee">plongée</Label>
+                    <SelectGroup id="plongee">
+                      <Select name="plongee-min" id="plongee-min">
+                        <option value="">-- min --</option>
+                        {timeOptions}
+                      </Select>
+                      <Select name="plongee-s" id="plongee-s">
+                        <option value="">-- s --</option>
+                        {timeOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                  <div>
+                    <Label htmlFor="plongeon">plongeon</Label>
+                    <SelectGroup id="plongeon">
+                      <Select name="plongeon-m" id="plongeon-m">
+                        <option value="">-- m --</option>
+                        {plongeonMeterOptions}
+                      </Select>
+                      <Select name="plongeon-cm" id="plongeon-cm">
+                        <option value="">-- cm --</option>
+                        {cmOptions}
+                      </Select>
+                    </SelectGroup>
+                  </div>
+                </FormGroupContainer>
+              </EpreuveContainer>
+            )}
+          </ResultContainer>
+        </ResultWrapper>
+      )}
     </div>
   )
 }
