@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { ViewContext } from '../../utils/context'
 import SelectUser from '../../components/Coach/SelectUser'
-import NewResultForm from '../../components/NewResult/Forms/NewResultForm'
-import Button from '../../components/Button'
+import NewResultForm from '../../components/NewResult/NewResultForm'
+import Button from '../../components/UI/Button'
 import StudentList from '../../components/Coach/Students/StudentsList'
 
 const url = `https://dummyapi.io/data/v1/user`

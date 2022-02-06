@@ -10,7 +10,7 @@ import {
   FormItemContainer,
   FormAction,
 } from './AuthFormElements'
-import Button from '../Button'
+import Button from '../UI/Button'
 import logo from '../../images/logo/logo.png'
 
 const redirectRoute = '/home'
